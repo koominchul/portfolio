@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Unity 클라이언트 개발자 구민철 포트폴리오">
+<title>구민철 포트폴리오</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: 좁은 왼쪽 연대 레일(연도) + 본문 컬럼 — 빌드 로그처럼 읽히는 경력 타임라인 */
+:root{
+  --bg:#f3f5f8; --surface:#ffffff; --ink:#18202d; --muted:#5a6578; --line:#d9dee7;
+  --accent:#2a55d8; --accent-soft:#e6ecfc; --warm:#b4610c; --warm-soft:#fbefe1;
+  --shot:#1d2533; --shot-ink:#e8edf6;
+  --f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#11161f; --surface:#19202c; --ink:#e6eaf1; --muted:#97a2b5; --line:#2a3342;
+  --accent:#7d9bff; --accent-soft:#1f2a47; --warm:#f0a85a; --warm-soft:#33261a;
+  --shot:#0b0f16; --shot-ink:#e8edf6; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11161f; --surface:#19202c; --ink:#e6eaf1; --muted:#97a2b5; --line:#2a3342;
+  --accent:#7d9bff; --accent-soft:#1f2a47; --warm:#f0a85a; --warm-soft:#33261a;
+  --shot:#0b0f16; --shot-ink:#e8edf6; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.65;margin:0}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:20px;padding-block:48px 72px}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+h1,h2,h3{text-wrap:balance;margin:0;line-height:1.3}
+.mono{font-family:var(--f-mono)}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+/* Header */
+header{display:grid;gap:20px;padding-bottom:36px;border-bottom:1px solid var(--line)}
+header h1{font-size:clamp(34px,6vw,52px);font-weight:700;letter-spacing:-.01em}
+header .role{font-size:clamp(17px,2.4vw,21px);font-weight:500}
+header .role b{color:var(--accent);font-weight:600}
+header p.lead{max-width:62ch;color:var(--muted);margin:0}
+.contact{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;font-size:14px}
+.contact span.k{font-family:var(--f-mono);font-size:12px;color:var(--muted);margin-right:6px}
+.copy{font:inherit;font-size:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:6px;padding:2px 8px;margin-left:6px;cursor:pointer}
+.stack{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-family:var(--f-mono);font-size:12.5px;padding:3px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
+.facts{display:flex;flex-wrap:wrap;gap:8px 28px;font-size:14px;color:var(--muted)}
+.facts b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+
+section{padding-top:56px}
+section>h2{font-size:24px;font-weight:700;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:22px}
+section>h2 .eyebrow{font-weight:400}
+
+/* Videos */
+.videos{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:22px}
+.vid{display:flex;flex-direction:column;gap:10px;min-width:0}
+.screen{position:relative;aspect-ratio:16/9;max-width:100%;border-radius:10px;overflow:hidden;background:var(--shot);color:var(--shot-ink);display:block;text-decoration:none;border:0;padding:0;width:100%;cursor:pointer}
+.screen img{width:100%;height:100%;object-fit:cover;display:block;opacity:.88;transition:opacity .2s}
+.screen:hover img{opacity:1}
+.screen .ph{position:absolute;inset:0;display:grid;place-items:center;background:
+  repeating-linear-gradient(0deg,transparent 0 23px,rgba(255,255,255,.04) 23px 24px),
+  repeating-linear-gradient(90deg,transparent 0 23px,rgba(255,255,255,.04) 23px 24px);}
+.screen .ph .nm{font-family:var(--f-mono);font-size:13px;opacity:.7;position:absolute;left:14px;bottom:12px}
+.play{position:absolute;left:50%;top:50%;width:62px;height:44px;margin:-22px 0 0 -31px;border-radius:12px;background:rgba(0,0,0,.62);display:grid;place-items:center;transition:background .2s,transform .2s}
+.screen:hover .play{background:#e5322d;transform:scale(1.05)}
+.play::after{content:"";border-left:16px solid #fff;border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:4px}
+.screen iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vid h3{font-size:16px;font-weight:600}
+.vid .meta{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.vid .meta a{font-size:13px;white-space:nowrap}
+
+/* Links */
+.links{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.lk{display:flex;flex-direction:column;gap:4px;padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:var(--surface);text-decoration:none;color:var(--ink);min-width:0;transition:border-color .2s}
+.lk:hover{border-color:var(--accent)}
+.lk .t{font-weight:600}
+.lk .u{font-family:var(--f-mono);font-size:12px;color:var(--accent);overflow-wrap:anywhere}
+
+/* Timeline */
+.tl{display:grid;gap:0}
+.job{display:grid;grid-template-columns:148px 1fr;gap:24px;padding-block:28px;border-top:1px solid var(--line)}
+.job:first-child{border-top:0;padding-top:4px}
+.when{font-family:var(--f-mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;display:flex;flex-direction:column;gap:2px}
+.when .dur{color:var(--ink);font-weight:500}
+.job .body{min-width:0;display:grid;gap:10px}
+.job h3{font-size:19px;font-weight:700;display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline}
+.job h3 small{font-size:14px;font-weight:500;color:var(--muted)}
+.job .sum{margin:0;max-width:68ch}
+.job ul{margin:0;padding-left:18px;display:grid;gap:2px;max-width:72ch}
+.job li::marker{color:var(--muted)}
+.proj{display:grid;gap:6px}
+.proj h4{margin:6px 0 0;font-size:15px;font-weight:600}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-family:var(--f-mono);font-size:12px;padding:2px 8px;border-radius:5px;border:1px solid var(--line);color:var(--muted)}
+.tag.ship{border-color:transparent;background:var(--warm-soft);color:var(--warm)}
+.engine{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.04em;color:var(--muted)}
+.jump{font-size:13px}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.rows{display:grid;gap:10px}
+.row{display:grid;grid-template-columns:96px 1fr;gap:14px}
+.row .d{font-family:var(--f-mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.intro p{max-width:66ch;margin:0 0 12px}
+footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+
+@media (max-width:720px){
+  .job{grid-template-columns:1fr;gap:10px}
+  .when{flex-direction:row;gap:12px}
+  .two{grid-template-columns:1fr;gap:32px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">Portfolio · 2026</div>
+  <h1>구민철</h1>
+  <div class="role"><b>Unity 클라이언트 개발자</b> · 모바일 · AR · VR · WebGL</div>
+  <p class="lead">PC 온라인 게임(C/Direct3D)으로 시작해 2011년부터 Unity로 모바일 게임, VR 의료기기, 유아 교육 AR 메타버스를 개발해 왔습니다. 여러 프로젝트에서 파트장(메인 클라이언트)을 맡아 개발부터 빌드 자동화, 스토어 출시와 납품까지 진행했습니다.</p>
+  <div class="facts">
+    <span>총 경력 <b>19년 6개월</b></span>
+    <span>Unity 경력 <b>2011 ~ 현재</b></span>
+    <span>출시 <b>Google Play · App Store · Pico VR · WebGL</b></span>
+  </div>
+  <div class="stack">
+    <span class="chip">C#</span><span class="chip">Unity</span><span class="chip">AR · Vuforia</span><span class="chip">VR · OpenXR</span><span class="chip">WebGL</span><span class="chip">UGUI / NGUI</span><span class="chip">REST API</span><span class="chip">Jenkins</span><span class="chip">Git</span><span class="chip">SVN</span><span class="chip">Claude Code</span>
+  </div>
+  <div class="contact">
+    <span><span class="k">EMAIL</span><span id="mail">luck9kr@gmail.com</span><button class="copy" id="copyMail" type="button">복사</button></span>
+    <span><span class="k">GITHUB</span><a href="https://github.com/koominchul" target="_blank" rel="noopener">github.com/koominchul</a></span>
+  </div>
+</header>
+
+<section id="videos">
+  <h2>포트폴리오 영상 <span class="eyebrow">8 videos</span></h2>
+  <div class="videos" id="videoGrid"></div>
+</section>
+
+<section id="links">
+  <h2>저장소 · 라이브 빌드 <span class="eyebrow">open source &amp; demos</span></h2>
+  <div class="links">
+    <a class="lk" href="https://github.com/koominchul/UISystemPackage" target="_blank" rel="noopener"><span class="t">UISystem 패키지</span><span>자체 제작 UI 시스템, 프로젝트 적용용 배포 저장소</span><span class="u">github.com/koominchul/UISystemPackage</span></a>
+    <a class="lk" href="https://github.com/koominchul/Sample_AR" target="_blank" rel="noopener"><span class="t">Sample AR</span><span>UISystem 기반 AR 샘플 프로젝트</span><span class="u">github.com/koominchul/Sample_AR</span></a>
+    <a class="lk" href="https://koominchul.github.io/webgl_test/build_wittiverseWeb/" target="_blank" rel="noopener"><span class="t">위티버스 WebGL</span><span>Android 앱을 WebGL로 포팅한 빌드</span><span class="u">koominchul.github.io/…/build_wittiverseWeb</span></a>
+    <a class="lk" href="https://koominchul.github.io/webgl_test/build_sparkonWeb/" target="_blank" rel="noopener"><span class="t">스파크온 WebGL</span><span>Android 앱을 WebGL로 포팅한 빌드</span><span class="u">koominchul.github.io/…/build_sparkonWeb</span></a>
+    <a class="lk" href="https://vror.co.kr/product" target="_blank" rel="noopener"><span class="t">VIGORIGHT · ROBUSTAND</span><span>테네터스 VR 의료기기·헬스케어 제품 소개</span><span class="u">vror.co.kr/product</span></a>
+  </div>
+</section>
+
+<section id="career">
+  <h2>경력 <span class="eyebrow">총 19년 6개월</span></h2>
+  <div class="tl">
+
+    <article class="job">
+      <div class="when"><span>2024.01 ~ 재직중</span></div>
+      <div class="body">
+        <h3>㈜미니게이트 <small>에듀테크본부 개발운영실 · 차장 · 파트장</small></h3>
+        <p class="sum">유아 교육 메타버스 <b>위티버스</b> 개발. 파트장(메인 클라이언트)으로 전반적인 개발을 맡고 있습니다.</p>
+        <ul>
+          <li>Vuforia 엔진 기반 AR 증강 콘텐츠 개발</li>
+          <li>라이브 스케치: 도안에 색칠한 정보를 증강해 3D 오브젝트에 텍스처 매핑</li>
+          <li>별자리 만들기: 별자리 카드 2장을 증강, 조합 결과에 따른 타임라인 씬 연출</li>
+          <li>Unity Localization 다국어 처리, UnityWebRequest REST API 통신, UGUI</li>
+          <li>Jenkins 빌드 자동화, Android 앱의 WebGL 포팅</li>
+          <li>Claude Code를 활용한 프로젝트 최적화 분석과 콘텐츠 제작</li>
+          <li>자체 UISystem 패키지 제작 후 프로젝트에 적용</li>
+        </ul>
+        <div class="tags"><span class="tag ship">Google Play 출시</span><span class="tag ship">App Store 출시</span><span class="tag">Android 태블릿 · 전자칠판 납품</span><span class="tag">충북 · 익산 · 김포 어린이집</span></div>
+        <a class="jump" href="#v-wittiverse">▶ 제품 서비스 영상 보기</a>
+      </div>
+    </article>
+
+    <article class="job">
+      <div class="when"><span>2021.12 ~ 2023.11</span><span class="dur">2년</span></div>
+      <div class="body">
+        <h3>㈜테네터스 <small>R&amp;D 개발팀 · 선임연구원 · 파트장</small></h3>
+        <p class="sum">VR 기기를 이용한 안구운동 검사장치(의료기기)와 헬스케어 제품 개발. 메인 클라이언트로 전반적인 개발을 맡았습니다.</p>
+        <ul>
+          <li>검사 로직·결과 화면 구현: Lancaster, SVV, RAPD, 대비감도, 외안근, 회선, 입체시, 동공, 시야, 사시각, 시력, 난시, 암슬러격자</li>
+          <li>Unity OpenXR, Pico SDK, Tobii Ocumen SDK로 Eye Tracking 데이터 기반 Pico 3 / Pico 4 HMD 빌드</li>
+          <li>조력자용 Windows 키오스크 빌드 (회원가입, 로그인, 검사 이력, 검사 진행)</li>
+          <li>I2 Localization 현지화, Best HTTP Pro REST API 통신, Jenkins 빌드 자동화</li>
+          <li>제품화 구성 및 배포·납품</li>
+        </ul>
+        <div class="tags"><span class="tag ship">의료기기 VIGORIGHT V100</span><span class="tag">고대안암 · 고대안산 · 용인세브란스 · 서울아산병원</span><span class="tag ship">헬스케어 ROBUSTAND</span><span class="tag">목동실버센터</span></div>
+        <a class="jump" href="https://vror.co.kr/product" target="_blank" rel="noopener">제품 홈페이지 ↗</a>
+      </div>
+    </article>
+
+    <article class="job">
+      <div class="when"><span>2015.08 ~ 2021.11</span><span class="dur">6년 4개월</span></div>
+      <div class="body">
+        <h3>㈜넵튠 <small>개발팀 · 선임연구원 · 파트장</small></h3>
+        <p class="sum">야구 시뮬레이션(선수카드 뽑기·육성 기반 AI팀 대전) 신규 개발 및 일본·국내 런칭, 사천성 시리즈 라이브 서비스.</p>
+        <div class="proj">
+          <h4>프로타쿠 · 레전드 라인업 · 게키프로</h4>
+          <ul>
+            <li>로그인부터 인게임까지 전체 콘텐츠 개발 (NGUI, NGUI Localization)</li>
+            <li>Best HTTP Pro 커스터마이징 + LitJson 서버 통신, Firebase 로그인</li>
+            <li>Mecanim 기반 인게임, Spine 2D 애니메이션</li>
+            <li>인게임 개입 상황 3D 컷씬 연출 툴 제작 — 애니메이터가 직접 연출 추가·수정 가능</li>
+            <li>Jenkins 빌드 자동화 구축 및 유지보수</li>
+          </ul>
+          <div class="tags"><span class="tag ship">일본 Google Play · App Store 런칭</span></div>
+          <h4>라인 탄탄 사천성 · 프렌즈 사천성</h4>
+          <ul>
+            <li>정기 업데이트와 추가 콘텐츠 개발, 일본(LINE)·국내(프렌즈) 서비스</li>
+            <li>LINE Game SDK, Growthy SDK 업데이트, I2 Localization, Spine</li>
+          </ul>
+          <div class="tags"><span class="tag ship">Google Play · App Store 운영</span></div>
+        </div>
+        <span class="jump"><a href="#v-protaku">▶ 프로타쿠 영상</a> · <a href="#v-gekipro">▶ 게키프로 영상</a></span>
+      </div>
+    </article>
+
+    <article class="job">
+      <div class="when"><span>2014.03 ~ 2015.06</span><span class="dur">1년 4개월</span></div>
+      <div class="body">
+        <h3>게임스랩 <small>개발팀 · 선임연구원 · 파트장</small></h3>
+        <div class="proj">
+          <h4>DongKu — 퍼즐 &amp; 리듬 게임</h4>
+          <p class="sum">4박자 리듬에 맞춰 터치로 이동하며 장애물을 피해 목적지에 도착하는 게임. 알파 버전까지 메인 클라이언트로 인게임 구현.</p>
+          <ul>
+            <li>Custom Editor Window 기반 맵툴·장애물 제작 베이스 구축</li>
+            <li>2D Toolkit 캐릭터 애니메이션, NGUI, Android 네이티브 플러그인 구글 로그인·결제</li>
+          </ul>
+          <h4>Metro Rambo — 클리커 게임</h4>
+          <p class="sum">지하철에 갇힌 승객을 좀비로부터 구출하는 게임. 개발 시작부터 출시까지 1인 개발.</p>
+          <ul>
+            <li>2D Toolkit, NGUI, FX Maker 이펙트, 구글 로그인·결제</li>
+          </ul>
+          <div class="tags"><span class="tag ship">Google Play 출시</span></div>
+        </div>
+        <span class="jump"><a href="#v-dongku">▶ DongKu 영상</a> · <a href="#v-metro">▶ Metro Rambo 영상</a></span>
+      </div>
+    </article>
+
+    <article class="job">
+      <div class="when"><span>2012.10 ~ 2014.02</span><span class="dur">1년 5개월</span></div>
+      <div class="body">
+        <h3>위메이드 <small>개발팀 · 선임연구원 · 파트장</small></h3>
+        <p class="sum"><b>Last Gladiator</b> — 고전 게임 황금성을 모티브로 한 가위바위보 기반 전투 게임. 메인 클라이언트로 전투 로직·아이템·스킬 개발.</p>
+        <ul>
+          <li>캐릭터 파츠 커스터마이즈, Unity 애니메이션 시스템 기반 전투</li>
+          <li>XML 파싱 데이터 테이블 구축, Weme SDK · 카카오 SDK 연동</li>
+          <li>NGUI, Jenkins 빌드 자동화</li>
+        </ul>
+        <a class="jump" href="#v-gladiator">▶ 프로젝트 영상</a>
+      </div>
+    </article>
+
+    <article class="job">
+      <div class="when"><span>2011.01 ~ 2012.06</span><span class="dur">1년 6개월</span></div>
+      <div class="body">
+        <h3>심게임즈 <small>개발팀 · 연구원</small></h3>
+        <p class="sum">8 vs 8 스포츠 액션 게임. PC 게임으로 개발 후 Web 빌드까지 완성. 첫 Unity 프로젝트.</p>
+        <ul>
+          <li>로그인~인게임 UI/UX: OnGUI → EZ GUI → NGUI로 전환</li>
+          <li>애니메이션 시스템 기반 캐릭터 이동·전투, 파티클 기반 스킬 구현</li>
+        </ul>
+        <a class="jump" href="#v-sim">▶ 프로젝트 영상</a>
+      </div>
+    </article>
+
+    <article class="job">
+      <div class="when"><span>2008.02 ~ 2011.01</span><span class="dur">3년</span></div>
+      <div class="body">
+        <h3>아프리카TV (나우콤) <small>개발팀 · 연구원</small></h3>
+        <p class="sum"><b>포트파이어</b> 오픈 베타까지 개발. C, Direct3D 자체 엔진 기반 UI/UX, 아이템전·보스전 게임 모드 추가.</p>
+        <span class="engine">C · DIRECT3D</span>
+      </div>
+    </article>
+
+    <article class="job">
+      <div class="when"><span>2006.11 ~ 2008.01</span><span class="dur">1년 3개월</span></div>
+      <div class="body">
+        <h3>오투미디어 <small>개발팀 · 사원</small></h3>
+        <p class="sum"><b>오투잼</b> 라이브 서비스 중 합류. Direct3D 자체 엔진 UI/UX, MFC 패치 툴 유지보수.</p>
+        <span class="engine">C · DIRECT3D · MFC</span>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section id="edu">
+  <div class="two">
+    <div>
+      <h2 style="font-size:20px;margin-bottom:16px">학력</h2>
+      <div class="rows">
+        <div class="row"><span class="d">2004.02</span><span>삼육대학교 전산정보과 졸업</span></div>
+      </div>
+    </div>
+    <div>
+      <h2 style="font-size:20px;margin-bottom:16px">자격증</h2>
+      <div class="rows">
+        <div class="row"><span class="d">2003.12</span><span>정보처리산업기사 · 한국산업인력공단</span></div>
+        <div class="row"><span class="d">2000.04</span><span>정보기기운용기능사 · 한국산업인력공단</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="intro">
+  <h2>소개</h2>
+  <p>군 복무 후 프로그래머로 진로를 정하고, 학원 과정을 수료한 뒤 게임 회사에서 개발을 시작했습니다. 오투미디어와 나우콤에서는 자체 엔진 기반 PC 온라인 게임을 개발·유지보수했고, 심게임즈에서 Unity를 처음 접한 이후 지금까지 Unity로 개발하고 있습니다.</p>
+  <p>가장 중요하게 여기는 것은 약속한 일정을 지키는 것입니다. 업무에서는 다른 파트와의 교류와 협력을 중시합니다. 협업이 잘될수록 업무 효율이 올라간다고 생각해 먼저 다가가려고 노력합니다.</p>
+</section>
+
+<footer>구민철 · Unity Client Developer · luck9kr@gmail.com</footer>
+</div>
+
+<script>
+const EMBED = true;
+const VIDEOS = [
+  {key:"wittiverse", id:"lb6gCUeoyt8", list:"PLn6ttSO5MpC2ftzCLFrwz24mLIcj4Px45", title:"위티버스 제품 서비스 영상", org:"미니게이트 · 2024~", tag:"AR · 유아교육"},
+  {key:"samplear", id:"lW_iOOZJ4J8", title:"Sample AR 구동 영상", org:"개인 프로젝트", tag:"AR · UISystem"},
+  {key:"protaku", id:"OQI-pFlmVLE", title:"프로타쿠", org:"넵튠 · 2015~2021", tag:"야구 시뮬레이션"},
+  {key:"gekipro", id:"q8AzIN7Mblo", title:"게키프로", org:"넵튠 · 2015~2021", tag:"야구 시뮬레이션"},
+  {key:"dongku", id:"dJ98whE-eFsE", title:"DongKu", org:"게임스랩 · 2014", tag:"퍼즐 · 리듬"},
+  {key:"metro", id:"BNCaesECVHU", title:"Metro Rambo", org:"게임스랩 · 2015", tag:"1인 개발 · 클리커"},
+  {key:"gladiator", id:"j195YaLuu74", title:"Last Gladiator", org:"위메이드 · 2012~2014", tag:"전투 RPG"},
+  {key:"sim", id:"u502k4FmWlM", title:"8 vs 8 스포츠 액션", org:"심게임즈 · 2011~2012", tag:"PC · Web"}
+];
+const grid = document.getElementById("videoGrid");
+const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+VIDEOS.forEach(v => {
+  const watch = "https://www.youtube.com/watch?v=" + v.id + (v.list ? "&list=" + v.list : "");
+  const el = document.createElement("div");
+  el.className = "vid"; el.id = "v-" + v.key;
+  const inner = EMBED
+    ? `<button class="screen" type="button" aria-label="${esc(v.title)} 재생"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" onerror="this.remove()"><span class="ph" style="background:none"></span><span class="play"></span></button>`
+    : `<a class="screen" href="${watch}" target="_blank" rel="noopener" aria-label="${esc(v.title)} YouTube에서 재생"><span class="ph"><span class="nm">youtube / ${v.id}</span></span><span class="play"></span></a>`;
+  el.innerHTML = inner +
+    `<h3>${esc(v.title)}</h3><div class="meta"><span>${esc(v.org)} · ${esc(v.tag)}</span><a href="${watch}" target="_blank" rel="noopener">YouTube에서 보기 ↗</a></div>`;
+  if (EMBED) {
+    const btn = el.querySelector(".screen");
+    btn.addEventListener("click", () => {
+      const f = document.createElement("iframe");
+      f.src = "https://www.youtube-nocookie.com/embed/" + v.id + "?autoplay=1&rel=0" + (v.list ? "&list=" + v.list : "");
+      f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+      f.allowFullscreen = true; f.title = v.title;
+      const box = document.createElement("div"); box.className = "screen"; box.style.cursor = "default";
+      box.appendChild(f); btn.replaceWith(box);
+    }, {once:true});
+  }
+  grid.appendChild(el);
+});
+document.getElementById("copyMail").addEventListener("click", e => {
+  const t = document.getElementById("mail").textContent, b = e.currentTarget;
+  const ok = () => { b.textContent = "복사됨"; setTimeout(() => b.textContent = "복사", 1500); };
+  const sel = () => { const r = document.createRange(); r.selectNodeContents(document.getElementById("mail")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+  try { navigator.clipboard.writeText(t).then(ok, sel); } catch (_) { sel(); }
+});
+</script>
+
+</body>
+</html>
