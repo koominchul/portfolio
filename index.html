@@ -114,6 +114,8 @@ figure.v{margin:0;display:grid;gap:8px;min-width:0}
 .player{position:relative;aspect-ratio:16/9;max-width:100%;width:100%;border-radius:10px;overflow:hidden;background:var(--shot);display:block;text-decoration:none;border:0;padding:0;cursor:pointer;color:#fff}
 .player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .player img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.player video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:var(--shot)}
+figure.v.local{max-width:640px}
 .player .ph{position:absolute;inset:0;background:
   repeating-linear-gradient(0deg,transparent 0 23px,rgba(255,255,255,.045) 23px 24px),
   repeating-linear-gradient(90deg,transparent 0 23px,rgba(255,255,255,.045) 23px 24px)}
@@ -310,6 +312,34 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--line);font-si
       <h5>포트폴리오</h5>
       <div class="links">
         <a class="lk" href="https://vror.co.kr/product" target="_blank" rel="noopener"><span class="t">VIGORIGHT · ROBUSTAND 제품 소개</span><span class="s">테네터스 공식 홈페이지</span><span class="u">vror.co.kr/product</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="proj" id="p-quiz">
+    <div class="proj-head">
+      <h4>XR 올림픽 퀴즈 팡팡</h4>
+      <p>Hokuyo 라이다 센서를 이용한 XR 체험 프로그램입니다. 평창동계올림픽 종목과 관련된 퀴즈를 풀며 전시 관람 내용을 복습하는 체험존 프로그램입니다.</p>
+    </div>
+    <dl class="spec">
+      <dt>구분</dt>
+      <dd>외주작업</dd>
+      <dt>출시 여부</dt>
+      <dd><span class="os y">납품 완료</span> 강릉 올림픽 뮤지엄</dd>
+      <dt>사용 기술 · 환경</dt>
+      <dd class="tech"><span>Hokuyo 라이다 센서</span></dd>
+    </dl>
+    <div class="pf">
+      <h5>포트폴리오</h5>
+      <div class="vids two">
+        <figure class="v local">
+          <div class="player"><video src="assets/quiz_pangpang.mp4" controls muted loop playsinline preload="metadata" aria-label="XR 올림픽 퀴즈 팡팡 시연 영상"></video></div>
+          <figcaption><b>XR 올림픽 퀴즈 팡팡</b></figcaption>
+        </figure>
+        <figure class="v local">
+          <a class="player" href="assets/quiz_pangpang.png" target="_blank" rel="noopener" aria-label="체험존 전경 이미지 크게 보기"><img src="assets/quiz_pangpang.png" alt="XR 올림픽 퀴즈 팡팡 체험존 전경" loading="lazy" style="object-position:50% 55%"></a>
+          <figcaption><b>체험존 전경</b></figcaption>
+        </figure>
       </div>
     </div>
   </section>
