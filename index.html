@@ -94,6 +94,7 @@ dl.spec ul{padding-left:18px;display:grid;gap:3px}
 dl.spec li::marker{color:var(--accent)}
 .feat{display:grid;gap:8px}
 .feat>div{display:grid;grid-template-columns:96px 1fr;gap:10px}
+dl.spec dd>.feat{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
 .feat .k{font-family:var(--f-mono);font-size:12px;font-weight:500;letter-spacing:.04em;color:var(--accent);padding-top:3px}
 .tech{display:flex;flex-wrap:wrap;gap:6px}
 .tech span{font-family:var(--f-mono);font-size:12.5px;padding:2px 8px;border-radius:5px;border:1px solid var(--line);color:var(--body)}
@@ -216,20 +217,17 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--line);font-si
       <dd><span class="os y">Android · Google Play</span><span class="os n">iOS · App Store 출시 준비중</span><br>Android 태블릿 · 전자칠판 납품 (충북, 익산시, 김포시 어린이집)</dd>
       <dt>참여 기간 · 인원</dt>
       <dd>2024.01 ~ 현재 · 총 12명 (유니티 3 · 기획 2 · 디자인 4 · 프론트엔드 1 · 백엔드 2)</dd>
-      <dt>담당 개발 영역</dt>
+      <dt>개발 영역</dt>
       <dd><ul>
         <li>Unity 클라이언트 전체 설계와 개발 리드 (파트장)</li>
         <li>Vuforia 기반 AR 이미지 인식·증강 콘텐츠</li>
         <li>REST API 서버 통신, 다국어 처리</li>
         <li>Android 런처앱 통합용 Unity 라이브러리(aar) export 빌드와 전달</li>
         <li>Jenkins 빌드 자동화, 스토어 출시</li>
+        <li><b>라이브 스케치</b>: 도안에 색칠한 영역을 인식해 3D 오브젝트의 텍스처로 매핑</li>
+        <li><b>별자리 만들기</b>: 별자리 카드 2장을 증강하고, 조합 결과에 따라 Timeline 씬 연출 재생</li>
+        <li>UGUI 기반 화면 구성, 자체 제작 <b>UISystem 패키지</b> 적용, Unity Localization 다국어 UI</li>
       </ul></dd>
-      <dt>직접 구현 기능</dt>
-      <dd class="feat">
-        <div><span class="k">3D</span><span><b>라이브 스케치</b>: 도안에 색칠한 영역을 인식해 3D 오브젝트의 텍스처로 매핑</span></div>
-        <div><span class="k">ANIMATION</span><span><b>별자리 만들기</b>: 별자리 카드 2장을 증강하고, 조합 결과에 따라 Timeline 씬 연출 재생</span></div>
-        <div><span class="k">UI</span><span>UGUI 기반 화면 구성, 자체 제작 <b>UISystem 패키지</b> 적용, Unity Localization 다국어 UI</span></div>
-      </dd>
       <dt>사용 기술 · 환경</dt>
       <dd class="tech"><span>Unity</span><span>C#</span><span>Vuforia</span><span>UGUI</span><span>Timeline</span><span>Unity Localization</span><span>UnityWebRequest</span><span>UaaL</span><span>WebGL</span><span>Jenkins</span><span>MeshBaker</span><span>Lightmap</span><span>Git</span><span>Windows</span><span>VS Code</span><span>Claude Code</span></dd>
       <dt>문제 해결 사례</dt>
@@ -286,18 +284,15 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--line);font-si
       <dd><span class="os y">Android · Pico VR</span><span class="os y">Windows 키오스크</span><span class="os n">iOS 해당 없음</span><br>고대안암·고대안산·용인세브란스·서울아산병원, 목동실버센터 납품</dd>
       <dt>참여 기간 · 인원</dt>
       <dd>2021.12 ~ 2023.11 · 총 9명 (유니티 3 · 기획 2 · 디자인 2 · 프론트엔드 1 · 백엔드 1), 3D 일부 외주 1</dd>
-      <dt>담당 개발 영역</dt>
+      <dt>개발 영역</dt>
       <dd><ul>
         <li>검사 로직과 결과 화면: Lancaster, SVV, RAPD, 대비감도, 외안근, 회선, 입체시, 동공, 시야, 사시각, 시력, 난시, 암슬러격자</li>
         <li>Eye Tracking 데이터 기반 Pico 3 / Pico 4 HMD 빌드</li>
         <li>조력자용 키오스크 (회원가입, 로그인, 검사 이력, 검사 진행)</li>
         <li>제품화 구성, 배포·납품, Jenkins 빌드 자동화</li>
+        <li>Pico HMD 검사 환경 구현, Eye Tracking 데이터 기반 측정</li>
+        <li>13종 검사 결과 화면, 키오스크 UI(UGUI), I2 Localization으로 Sprite·Texture·Text 현지화</li>
       </ul></dd>
-      <dt>직접 구현 기능</dt>
-      <dd class="feat">
-        <div><span class="k">3D</span><span>Pico HMD 검사 환경 구현, Eye Tracking 데이터 기반 측정</span></div>
-        <div><span class="k">UI</span><span>13종 검사 결과 화면, 키오스크 UI(UGUI), I2 Localization으로 Sprite·Texture·Text 현지화</span></div>
-      </dd>
       <dt>사용 기술 · 환경</dt>
       <dd class="tech"><span>Unity</span><span>C#</span><span>Unity OpenXR</span><span>Pico SDK</span><span>Tobii Ocumen SDK</span><span>UGUI</span><span>I2 Localization</span><span>Best HTTP Pro</span><span>REST API</span><span>Jenkins</span><span>Android</span><span>Windows Standalone</span></dd>
       <dt>문제 해결 사례</dt>
@@ -327,7 +322,10 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--line);font-si
       <dt>출시 여부</dt>
       <dd><span class="os y">납품 완료</span> 강릉 올림픽 뮤지엄</dd>
       <dt>사용 기술 · 환경</dt>
-      <dd class="tech"><span>Hokuyo 라이다 센서</span></dd>
+      <dd class="tech"><span>Unity</span><span>C#</span><span>UGUI</span><span>I2 Localization</span><span>Best HTTP Pro</span><span>REST API</span><span>Windows Standalone</span><span>Hokuyo 라이다 센서</span></dd>
+      <dt>문제 해결 사례</dt>
+      <dd class="case"><div><b>현장에서 재빌드 없이 조정하는 설정값</b>
+        <span class="so"><span class="lb">해결</span>세부 수치와 설정값을 StreamingAssets로 분리해, 설치 현장에서 재빌드 없이 파일의 설정값을 수정하는 것만으로 센서 좌표와 기타 설정을 조정했습니다.</span></div></dd>
     </dl>
     <div class="pf">
       <h5>포트폴리오</h5>
@@ -363,19 +361,16 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--line);font-si
       <dd><span class="os y">Android · Google Play</span><span class="os y">iOS · App Store</span> 일본 · 국내 서비스</dd>
       <dt>참여 기간 · 인원</dt>
       <dd>5년 6개월 · 총 13명 (유니티 3 · 기획 3 · 디자인 5 · 백엔드 2)</dd>
-      <dt>담당 개발 영역</dt>
+      <dt>개발 영역</dt>
       <dd><ul>
         <li>로그인부터 인게임까지 전체 클라이언트 콘텐츠</li>
         <li>서버 통신 모듈, Firebase 로그인</li>
         <li>인게임 시뮬레이션 연출, 컷씬 연출 툴</li>
         <li>Jenkins 빌드 자동화 구축과 유지보수, 일본 스토어 출시</li>
+        <li>인게임 개입 상황에 재생되는 <b>3D 컷씬 연출</b></li>
+        <li>Mecanim 기반 인게임 선수 애니메이션, Spine 2D 애니메이션</li>
+        <li>NGUI 기반 전체 화면, NGUI Localization 텍스트 현지화</li>
       </ul></dd>
-      <dt>직접 구현 기능</dt>
-      <dd class="feat">
-        <div><span class="k">3D</span><span>인게임 개입 상황에 재생되는 <b>3D 컷씬 연출</b></span></div>
-        <div><span class="k">ANIMATION</span><span>Mecanim 기반 인게임 선수 애니메이션, Spine 2D 애니메이션</span></div>
-        <div><span class="k">UI</span><span>NGUI 기반 전체 화면, NGUI Localization 텍스트 현지화</span></div>
-      </dd>
       <dt>사용 기술 · 환경</dt>
       <dd class="tech"><span>Unity</span><span>C#</span><span>NGUI</span><span>Mecanim</span><span>Spine</span><span>Best HTTP Pro</span><span>LitJson</span><span>Firebase</span><span>Jenkins</span></dd>
       <dt>문제 해결 사례</dt>
@@ -384,8 +379,6 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--line);font-si
           <span class="pr"><span class="lb">문제</span>컷씬 연출을 고칠 때마다 개발자 작업이 필요했습니다.</span>
           <span class="so"><span class="lb">해결</span>Unity 에디터 툴로 컷씬 구조를 만들어, 애니메이터가 연출을 직접 추가·수정할 수 있게 했습니다.</span>
           <span class="rs"><span class="lb">결과</span>애니메이터가 작업 후 결과 파일(JSON)을 넘겨주는 방식으로 바뀌어 피드백이 빨라지고 협업이 쉬워졌습니다.</span></div>
-        <div><b>서버 통신 모듈</b>
-          <span class="pr"><span class="lb">해결</span>Best HTTP Pro를 프로젝트에 맞게 커스터마이징하고 LitJson으로 직렬화해 서버 통신을 구성했습니다.</span></div>
       </dd>
     </dl>
     <div class="pf">
@@ -407,17 +400,14 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--line);font-si
       <dd><span class="os y">Android · Google Play</span><span class="os y">iOS · App Store</span> 라이브 운영</dd>
       <dt>참여 기간 · 인원</dt>
       <dd>8개월 · 총 9.5명 (유니티 3 · 기획 2 · 디자인 3 · 백엔드 1.5)</dd>
-      <dt>담당 개발 영역</dt>
+      <dt>개발 영역</dt>
       <dd><ul>
         <li>정기 업데이트와 추가 콘텐츠 개발</li>
         <li>LINE Game SDK, Growthy SDK 업데이트 적용</li>
         <li>Jenkins 빌드 자동화 유지보수, 스토어 운영</li>
+        <li>Spine 2D 애니메이션</li>
+        <li>NGUI 기반 추가 콘텐츠 화면, I2 Localization으로 Sprite·Texture·Text 현지화</li>
       </ul></dd>
-      <dt>직접 구현 기능</dt>
-      <dd class="feat">
-        <div><span class="k">ANIMATION</span><span>Spine 2D 애니메이션</span></div>
-        <div><span class="k">UI</span><span>NGUI 기반 추가 콘텐츠 화면, I2 Localization으로 Sprite·Texture·Text 현지화</span></div>
-      </dd>
       <dt>사용 기술 · 환경</dt>
       <dd class="tech"><span>Unity</span><span>C#</span><span>NGUI</span><span>Spine</span><span>I2 Localization</span><span>Best HTTP Pro</span><span>LINE Game SDK</span><span>Growthy SDK</span><span>Jenkins</span></dd>
     </dl>
@@ -442,13 +432,11 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--line);font-si
       <dd><span class="os n">Android 알파 버전까지 개발</span><span class="os n">iOS 해당 없음</span></dd>
       <dt>참여 기간 · 인원</dt>
       <dd>4개월 · 총 4명 (유니티 1 · 기획 1 · 디자인 2)</dd>
-      <dt>담당 개발 영역</dt>
-      <dd><ul><li>알파 버전까지 메인 클라이언트로 인게임 전체 구현</li><li>맵·장애물 제작 툴</li><li>구글 로그인·결제</li></ul></dd>
-      <dt>직접 구현 기능</dt>
-      <dd class="feat">
-        <div><span class="k">ANIMATION</span><span>2D Toolkit 기반 캐릭터 애니메이션, 리듬 박자에 맞춘 이동</span></div>
-        <div><span class="k">UI</span><span>NGUI 기반 화면</span></div>
-      </dd>
+      <dt>개발 영역</dt>
+      <dd><ul><li>알파 버전까지 메인 클라이언트로 인게임 전체 구현</li><li>맵·장애물 제작 툴</li><li>구글 로그인·결제</li>
+        <li>2D Toolkit 기반 캐릭터 애니메이션, 리듬 박자에 맞춘 이동</li>
+        <li>NGUI 기반 화면</li>
+      </ul></dd>
       <dt>사용 기술 · 환경</dt>
       <dd class="tech"><span>Unity</span><span>C#</span><span>2D Toolkit</span><span>NGUI</span><span>Custom Editor</span><span>Android Native Plugin</span></dd>
       <dt>문제 해결 사례</dt>
@@ -471,13 +459,12 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--line);font-si
       <dd><span class="os y">Android · Google Play</span><span class="os n">iOS 해당 없음</span></dd>
       <dt>참여 기간 · 인원</dt>
       <dd>1년 · 총 4명 (유니티 1 · 기획 1 · 디자인 2), 클라이언트 1인 개발</dd>
-      <dt>담당 개발 영역</dt>
-      <dd>클라이언트 전체 (인게임, UI, 이펙트, 로그인·결제, 출시)</dd>
-      <dt>직접 구현 기능</dt>
-      <dd class="feat">
-        <div><span class="k">ANIMATION</span><span>2D Toolkit 캐릭터 애니메이션, FX Maker 이펙트</span></div>
-        <div><span class="k">UI</span><span>NGUI 기반 전체 화면</span></div>
-      </dd>
+      <dt>개발 영역</dt>
+      <dd><ul>
+        <li>클라이언트 전체 (인게임, UI, 이펙트, 로그인·결제, 출시)</li>
+        <li>2D Toolkit 캐릭터 애니메이션, FX Maker 이펙트</li>
+        <li>NGUI 기반 전체 화면</li>
+      </ul></dd>
       <dt>사용 기술 · 환경</dt>
       <dd class="tech"><span>Unity</span><span>C#</span><span>2D Toolkit</span><span>NGUI</span><span>FX Maker</span><span>Android Native Plugin</span><span>Google Play 결제</span></dd>
     </dl>
@@ -506,14 +493,12 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--line);font-si
       <dd><span class="os n">미출시</span> 출시 전 프로젝트 드랍</dd>
       <dt>참여 기간 · 인원</dt>
       <dd>2012.10 ~ 2014.02 · 총 10명 (유니티 3 · 기획 2 · 디자인 3 · 백엔드 2)</dd>
-      <dt>담당 개발 영역</dt>
-      <dd><ul><li>전투 로직, 아이템, 스킬</li><li>XML 데이터 테이블 구축</li><li>Weme SDK · 카카오 SDK 연동, Jenkins 빌드 자동화</li></ul></dd>
-      <dt>직접 구현 기능</dt>
-      <dd class="feat">
-        <div><span class="k">3D</span><span>캐릭터 파츠 교체 커스터마이즈</span></div>
-        <div><span class="k">ANIMATION</span><span>Unity 애니메이션 시스템 기반 전투 연출</span></div>
-        <div><span class="k">UI</span><span>NGUI 기반 화면</span></div>
-      </dd>
+      <dt>개발 영역</dt>
+      <dd><ul><li>전투 로직, 아이템, 스킬</li><li>XML 데이터 테이블 구축</li><li>Weme SDK · 카카오 SDK 연동, Jenkins 빌드 자동화</li>
+        <li>캐릭터 파츠 교체 커스터마이즈</li>
+        <li>Unity 애니메이션 시스템 기반 전투 연출</li>
+        <li>NGUI 기반 화면</li>
+      </ul></dd>
       <dt>사용 기술 · 환경</dt>
       <dd class="tech"><span>Unity</span><span>C#</span><span>NGUI</span><span>XML</span><span>Weme SDK</span><span>Kakao SDK</span><span>Jenkins</span></dd>
     </dl>
@@ -542,13 +527,12 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--line);font-si
       <dd><span class="os n">PC · Web (모바일 해당 없음)</span></dd>
       <dt>참여 기간 · 인원</dt>
       <dd>2011.01 ~ 2012.06 · 총 8명 (유니티 2 · 기획 2 · 디자인 3 · 백엔드 1)</dd>
-      <dt>담당 개발 영역</dt>
-      <dd>로그인~인게임 UI/UX, 게임 전투·룰·스킬</dd>
-      <dt>직접 구현 기능</dt>
-      <dd class="feat">
-        <div><span class="k">ANIMATION</span><span>캐릭터 이동과 전투 애니메이션, 파티클 기반 스킬 이펙트</span></div>
-        <div><span class="k">UI</span><span>OnGUI로 시작해 EZ GUI, NGUI로 전환</span></div>
-      </dd>
+      <dt>개발 영역</dt>
+      <dd><ul>
+        <li>로그인~인게임 UI/UX, 게임 전투·룰·스킬</li>
+        <li>캐릭터 이동과 전투 애니메이션, 파티클 기반 스킬 이펙트</li>
+        <li>OnGUI로 시작해 EZ GUI, NGUI로 전환</li>
+      </ul></dd>
       <dt>사용 기술 · 환경</dt>
       <dd class="tech"><span>Unity</span><span>C#</span><span>OnGUI</span><span>EZ GUI</span><span>NGUI</span><span>Particle System</span><span>Web 빌드</span></dd>
       <dt>문제 해결 사례</dt>
